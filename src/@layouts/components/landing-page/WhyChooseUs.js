@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function WhyChooseUsSticky() {
   return (
     <section className="relative h-[200vh] ">
-      <div className="sticky top-0 h-screen z-10 bg-[url(/choose-bg.jpg)] flex items-center">
+      <div className="sticky top-0 h-screen z-10 bg-[url(/img/choose-bg.jpg)] flex items-center">
         <div className="max-w-6xl mx-auto px-6 lg:px-12 w-full">
           <div className="flex items-start gap-4 mb-8">
           <Image src="/img/CurlyLog.png" alt="curly-bracket" height={100} width={100} className="w-6 h-20 shrink-0" />
@@ -41,7 +41,7 @@ export default function WhyChooseUsSticky() {
       </div>
 
       {/* PANEL 2 — How we solve it (slides OVER panel 1) */}
-      <div className="sticky top-0 h-screen z-20 bg-[url(/choose-bg.jpg)] flex items-center shadow-[0_-30px_80px_rgba(0,0,0,0.08)]">
+      <div className="sticky top-0 h-screen z-20 bg-[url(/img/choose-bg.jpg)] flex items-center shadow-[0_-30px_80px_rgba(0,0,0,0.08)]">
         <div className="max-w-6xl mx-auto px-2 lg:px-12 w-full">
           <div className="flex items-start gap-4 mb-8">
             <Image src="/img/CurlyLog.png" alt="curly-bracket" height={100} width={100} className="w-6 h-20 shrink-0" />
@@ -86,7 +86,7 @@ export default function WhyChooseUsSticky() {
 
 function Card({ title, desc, tick = false }) {
   return (
-    <div className="rounded-2xl backdrop-blur-[2px] p-5 lg:p-6 bg-[linear-gradient(54.83deg,#E6F5F9_3.25%,#F9F9F9_95.65%)] shadow-sm hover:shadow-md transition">
+    <div className="rounded-2xl backdrop-blur-[2px] p-5 lg:p-6 bg-[linear-gradient(54.83deg,#E6F5F9_3.25%,#F9F9F9_95.65%)] shadow-sm hover:shadow-md hover:bg-[linear-gradient(200.83deg,#E6F5F9_3.25%,#F9F9F9_95.65%)] transition ">
       <div className="flex items-start gap-3 ">
         <span
           className={`mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${

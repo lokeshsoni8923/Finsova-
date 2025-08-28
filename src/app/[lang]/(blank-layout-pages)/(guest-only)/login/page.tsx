@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 
 // Component Imports
 import Login from '@views/Login'
-import Home from '@/views/landing'
 
 // Server Action Imports
 import { getServerMode } from '@core/utils/serverHelpers'
@@ -17,7 +16,7 @@ const LoginPage = async () => {
   // Vars
   const mode = await getServerMode()
 
-  return <Home mode={mode} />
+  return <Login mode={mode} />
 }
 
 export default LoginPage

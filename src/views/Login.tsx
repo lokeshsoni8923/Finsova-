@@ -192,7 +192,7 @@ const Login = ({ mode }: { mode: SystemMode }) => {
                  <Image src={'/images/logos/FINSOVA.v2_logo.png'} width={300} height={50} alt={`Bharat pay logo` } className ="object-contain mb-10"/>
               </div>
               <div className='flex flex-col gap-1 mb-2 justify-start items-start'>
-                  
+
                 <Typography variant='h4'>{`Welcome to ${themeConfig.templateName}`}</Typography>
                 <Typography>Please sign-in to your account and start the adventure</Typography>
               </div>

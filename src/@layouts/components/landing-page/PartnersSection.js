@@ -19,7 +19,7 @@ export default function PartnersSection() {
   const swiperRef = useRef(null);
 
   return (
-    <section className="py-5 pb-9 bg-white relative">
+    <section className="py-5 pb-9 bg-white relative w-auto">
       <div className="flex mx-3 px-5 w-30 gap-5 justify-between items-center">
         <div className="flex w-px-16">
          <Image src="/img/CurlyLog.png" alt="curly-bracket" height={100} width={100} className="w-6 h-20 shrink-0" />
@@ -43,7 +43,7 @@ export default function PartnersSection() {
       </div>
 
       {/* Slider */}
-      <div className="relative mx-auto border-2 border-black w-[90%] p-[20px] rounded-3xl">
+      <div className="relative mx-8 border-2 border-black w-auto p-[20px] rounded-3xl">
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           modules={[Autoplay, Navigation]}
@@ -56,7 +56,7 @@ export default function PartnersSection() {
             prevEl: ".swiper-button-prev",
           }}
           breakpoints={{
-            0: { slidesPerView: 2 },
+            0: { slidesPerView: 1 },
             640: { slidesPerView: 3 },
             1024: { slidesPerView: 4 },
           }}

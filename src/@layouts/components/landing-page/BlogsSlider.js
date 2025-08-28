@@ -1,99 +1,104 @@
 // components/BlogSlider.jsx
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import Image from "next/image";
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Navigation } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import Image from 'next/image'
 
 export default function BlogSlider() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("/api/blog")
-      .then((r) => r.json())
-      .then((data) => {
-        if (Array.isArray(data)) setPosts(data);
+    fetch('/api/blog')
+      .then(r => r.json())
+      .then(data => {
+        if (Array.isArray(data)) setPosts(data)
         else {
-          console.error("API did not return an array:", data);
-          setPosts([]);
+          console.error('API did not return an array:', data)
+          setPosts([])
         }
       })
-      .catch((e) => console.error(e))
-      .finally(() => setLoading(false));
-  }, []);
+      .catch(e => console.error(e))
+      .finally(() => setLoading(false))
+  }, [])
 
   if (loading) {
     return (
-      <section className="my-16 text-center">
-        <h2 className="text-3xl font-bold mb-4">Our Blog</h2>
+      <section className='my-16 text-center'>
+        <h2 className='text-3xl font-bold mb-4'>Our Blog</h2>
         <p>Loading…</p>
       </section>
-    );
+    )
   }
 
   if (!posts.length) {
     return (
-      <section className="my-16 text-center">
-        <h2 className="text-3xl font-bold mb-4">Our Blog</h2>
-        <p className="text-gray-500">No posts available yet.</p>
+      <section className='my-16 text-center'>
+        <h2 className='text-3xl font-bold mb-4'>Our Blog</h2>
+        <p className='text-gray-500'>No posts available yet.</p>
       </section>
-    );
+    )
   }
 
   // If few slides, don’t force loop
-  const loopEnabled = posts.length > 3;
+  const loopEnabled = posts.length > 3
 
   return (
-    <section className="my-16 relative h-auto bg-gradient-to-br from-green-50 to-green-50 p-10">
+    <section className='my-16 relative h-auto bg-gradient-to-br from-green-50 to-green-50 p-10'>
       {/* Title */}
-      <div className="flex items-center mx-5 gap-3 mb-8">
-        <Image src="/img/CurlyLog.png" alt="curly-bracket" height={100} width={100} className="w-6 h-20 shrink-0" />
+      <div className='flex justify-between items-center'>
+      <div className='flex items-center mx-5 gap-3 mb-8'>
+        <Image src='/img/CurlyLog.png' alt='curly-bracket' height={100} width={100} className='w-6 h-20 shrink-0' />
 
-        <h2 className="text-3xl font-serif">Our Blog</h2>
+        <h2 className='text-3xl font-serif'>Our Blog</h2>
       </div>
+        <div className='absolute right-6 lg:top-12 sm:top-6 flex gap-3 z-10'>
+          <button className='swiper-button-prev-test bg-transparent hover:bg-[linear-gradient(269.83deg,_#009883_-52.73%,_#384680_99.89%)] text-black p-2 sm:p-3 lg:p-4 border border-black rounded-[40px] transition-all'>
+            ❮
+          </button>
+          <button className='swiper-button-next-test bg-transparent hover:bg-[linear-gradient(269.83deg,_#009883_-52.73%,_#384680_99.89%)] text-black p-2 sm:p-3 lg:p-4 border border-black rounded-[40px] transition-all'>
+            ❯
+          </button>
+        </div>
+        </div>
 
       <Swiper
         modules={[Autoplay, Navigation]}
         spaceBetween={30}
         slidesPerView={1}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
-        navigation
+        navigation={{
+          nextEl: '.swiper-button-next-test',
+          prevEl: '.swiper-button-prev-test'
+        }}
         loop={loopEnabled}
         breakpoints={{
           768: { slidesPerView: Math.min(posts.length, 2) },
-          1024: { slidesPerView: Math.min(posts.length, 3) },
+          1024: { slidesPerView: Math.min(posts.length, 3) }
         }}
       >
-        {posts.map((post) => (
+        {posts.map(post => (
           <SwiperSlide key={post.slug}>
-            <div className="relative rounded-xl overflow-hidden shadow-md group">
+            <div className='relative rounded-xl overflow-hidden shadow-md group'>
               {/* Background image */}
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-[350px] object-cover"
-              />
+              <img src={post.image} alt={post.title} className='w-full h-[350px] object-cover' />
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1f3c88cc] via-[#1f3c884d] to-transparent"></div>
+              <div className='absolute inset-0 bg-gradient-to-t from-[#1f3c88cc] via-[#1f3c884d] to-transparent'></div>
 
               {/* Content */}
-              <div className="absolute bottom-5 left-5 right-5 text-white">
-                <p className="text-sm opacity-90 mb-1">{post.date}</p>
-                <h3 className="text-xl font-semibold mb-2">
-                  {post.title}
-                </h3>
-                <p className="text-sm opacity-80 mb-4 line-clamp-2">
-                  {post.description}
-                </p>
+              <div className='absolute bottom-5 left-5 right-5 text-white'>
+                <p className='text-sm opacity-90 mb-1'>{post.date}</p>
+                <h3 className='text-xl font-semibold mb-2'>{post.title}</h3>
+                <p className='text-sm opacity-80 mb-4 line-clamp-2'>{post.description}</p>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-block px-5 py-2 bg-white text-[#1f3c99] rounded-full font-medium transition hover:bg-gray-100"
+                  className='inline-block px-5 py-2 bg-white text-[#1f3c99] rounded-full font-medium transition hover:bg-gray-100'
                 >
                   Continue Reading →
                 </Link>
@@ -103,5 +108,5 @@ export default function BlogSlider() {
         ))}
       </Swiper>
     </section>
-  );
+  )
 }

@@ -5,13 +5,7 @@ const nextConfig: NextConfig = {
   redirects: async () => {
     return [
       {
-        source: '//:lang(en|fr|ar)',
-        destination: '/en/dashboards/crm',
-        permanent: true,
-        locale: false
-      },
-      {
-        source: '/:lang(en|fr|ar)/login',
+        source: '/',
         destination: '/en/dashboards/crm',
         permanent: true,
         locale: false
