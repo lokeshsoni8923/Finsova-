@@ -59,7 +59,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/views/landing.tsx", "src/@layouts/components/landing-page/FAQ.tsx", "src/@layouts/components/landing-page/StockGrowthIntro.jsx"  ],
+, "src/views/landing.tsx", "src/@layouts/components/landing-page/FAQ.tsx", "src/@layouts/components/landing-page/StockGrowthIntro.jsx", "src/@layouts/components/landing-page/ServicesSlider.js"  ],
   "exclude": [
     "node_modules"
   ]
